@@ -37,6 +37,11 @@ gem "foreman"
 
 gem 'sprockets', '2.12.3'
 
+gem 'teaspoon'
+gem "teaspoon-jasmine"
+
+gem 'phantomjs'
+
 group :production, :staging do
   gem "rails_12factor"
   gem "rails_stdout_logging"

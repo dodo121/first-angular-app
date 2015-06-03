@@ -1,7 +1,7 @@
 require 'spec_helper.rb'
 
 feature "Looking up recipes", js: true do
-  before(:each) do
+  before do
     Recipe.create!(name: 'Baked Potato w/ Cheese')
     Recipe.create!(name: 'Garlic Mashed Potatoes')
     Recipe.create!(name: 'Potatoes Au Gratin')

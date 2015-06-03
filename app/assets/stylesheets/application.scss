@@ -1,2 +1,11 @@
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+.letters {
+  width: 10px;
+  color: #787878;
+  li:hover {
+    cursor: pointer;
+    color: #000;
+  }
+}

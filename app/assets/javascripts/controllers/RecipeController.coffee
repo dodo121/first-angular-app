@@ -1,5 +1,10 @@
 controllers = angular.module('controllers')
-controllers.controller("RecipeController", [ '$scope', '$routeParams', '$resource', '$location', 'flash',
+controllers.controller("RecipeController", [
+  '$scope',
+  '$routeParams',
+  '$resource',
+  '$location',
+  'flash',
   ($scope,$routeParams,$resource,$location, flash)->
     Recipe = $resource('/recipes/:recipeId', { recipeId: "@id", format: 'json' },
       {
@@ -7,7 +12,6 @@ controllers.controller("RecipeController", [ '$scope', '$routeParams', '$resourc
         'create': {method:'POST'}
       }
     )
-
     if $routeParams.recipeId
       Recipe.get({recipeId: $routeParams.recipeId},
         ( (recipe)-> $scope.recipe = recipe ),
@@ -32,16 +36,18 @@ controllers.controller("RecipeController", [ '$scope', '$routeParams', '$resourc
       if $scope.recipe.id
         $scope.recipe.$save(
           ( ()-> $location.path("/recipes/#{$scope.recipe.id}") ),
-          onError)
+          onError
+        )
+        #flash.success = "Updated successfully"
       else
         Recipe.create($scope.recipe,
           ( (newRecipe)-> $location.path("/recipes/#{newRecipe.id}") ),
           onError
         )
+        #flash.success = "Updated successfully"
 
     $scope.delete = ->
       $scope.recipe.$delete()
       $scope.back()
-
 
 ])

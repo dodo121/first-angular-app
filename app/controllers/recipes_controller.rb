@@ -3,9 +3,9 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = if params[:keywords]
-                Recipe.where('name ilike ?', "%#{params[:keywords]}%")
+                Recipe.where('name ilike ?', "%#{params[:keywords]}%").order(:name)
               else
-                Recipe.all
+                Recipe.all.order(:name)
               end
   end
 
